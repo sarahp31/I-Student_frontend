@@ -18,9 +18,12 @@ function Header() {
 
   return (
     <div className="appbar">
-      <img src="logo-insper.png" className="logoInsper"/>
+      <img src="logo-insper.png"/>
       <Button
-      className="button-engenharia"
+      sx={{ 
+        color: 'black',
+        textTransform: 'none',
+      }}
       id="basic-button"
       aria-controls={open ? 'basic-menu' : undefined}
       aria-haspopup="true"
@@ -38,10 +41,82 @@ function Header() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Computação</MenuItem>
-        <MenuItem onClick={handleClose}>Mecânica</MenuItem>
-        <MenuItem onClick={handleClose}>Mecatrônica</MenuItem>
+        <MenuItem
+        sx={{
+          backgroundColor:'red',
+          color: 'white',
+        }} 
+        onClick={handleClose}>Computação</MenuItem>
+        <MenuItem
+        sx={{
+          backgroundColor:'red',
+          color: 'white',
+        }} 
+        onClick={handleClose}>Mecânica</MenuItem>
+        <MenuItem
+        sx={{
+          backgroundColor:'red',
+          color: 'white',
+        }}  
+        onClick={handleClose}>Mecatrônica</MenuItem>
       </Menu>
+      <Button
+      sx={{ 
+        color: 'black',
+        textTransform: 'none',
+      }}
+      id="basic-button"
+      aria-controls={open ? 'basic-menu' : undefined}
+      aria-haspopup="true"
+      aria-expanded={open ? 'true' : undefined}
+      // onClick={handleClick}
+      >
+      Administração
+      </Button>
+      <Button
+      sx={{ 
+        color: 'black',
+        textTransform: 'none',
+      }}
+      id="basic-button"
+      aria-controls={open ? 'basic-menu' : undefined}
+      aria-haspopup="true"
+      aria-expanded={open ? 'true' : undefined}
+      // onClick={handleClick}
+      >
+      Economia
+      </Button>
+      <Button
+      sx={{ 
+        color: 'black',
+        textTransform: 'none',
+      }}
+      id="basic-button"
+      aria-controls={open ? 'basic-menu' : undefined}
+      aria-haspopup="true"
+      aria-expanded={open ? 'true' : undefined}
+      // onClick={handleClick}
+      >
+      Ciência da Computação
+      </Button>
+      <Button
+      sx={{ 
+        color: 'white',
+        fontWeight: 'bold',
+        backgroundColor:'red',
+        borderRadius: 4.5,
+        textTransform: 'none',
+      }}
+      id="basic-button"
+      aria-controls={open ? 'basic-menu' : undefined}
+      aria-haspopup="true"
+      aria-expanded={open ? 'true' : undefined}
+      // onClick={handleClick}
+      >
+      Log In
+      </Button>
+      
+
     </div>
   );
   }
