@@ -1,20 +1,11 @@
 import Box from '@mui/material/Box';
+import "./index.css";
 
 function Footer() {
     return (
-      <div className="footer-box">
-        <Box
-        sx={{
-            width: 300,
-            height: 300,
-            backgroundColor: 'primary.dark',
-            '&:hover': {
-            backgroundColor: 'primary.main',
-            opacity: [0.9, 0.8, 0.7],
-            },
-        }}
-        />
-      </div>
+      <footer className="footer-box">
+        <Box sx={{ bgcolor: '#7d7d7d', height: '10vh'}}/>
+      </footer>
     );
   }
   
