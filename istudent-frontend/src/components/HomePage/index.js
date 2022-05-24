@@ -1,5 +1,4 @@
 import "./index.css";
-import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 
 function HomePage() {
