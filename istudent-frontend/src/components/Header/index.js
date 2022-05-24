@@ -18,6 +18,9 @@ function Header() {
 
   return (
     <div className="appbar">
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+      </style>
       <img src="logo-insper.png"/>
       <Button
       sx={{ 
@@ -43,20 +46,20 @@ function Header() {
       >
         <MenuItem
         sx={{
-          backgroundColor:'red',
-          color: 'white',
+          backgroundColor:'#ce0303',
+          color: '#d6d6d6',
         }} 
         onClick={handleClose}>Computação</MenuItem>
         <MenuItem
         sx={{
-          backgroundColor:'red',
-          color: 'white',
+          backgroundColor:'#ce0303',
+          color: '#d6d6d6',
         }} 
         onClick={handleClose}>Mecânica</MenuItem>
         <MenuItem
         sx={{
-          backgroundColor:'red',
-          color: 'white',
+          backgroundColor:'#ce0303',
+          color: '#d6d6d6',
         }}  
         onClick={handleClose}>Mecatrônica</MenuItem>
       </Menu>
@@ -103,7 +106,7 @@ function Header() {
       sx={{ 
         color: 'white',
         fontWeight: 'bold',
-        backgroundColor:'red',
+        backgroundColor:'#ce0303',
         borderRadius: 4.5,
         textTransform: 'none',
       }}
