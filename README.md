@@ -10,5 +10,5 @@
 - [ ] Função upload de resumo, parte em frontend <br/>
 
 ### Semana 3 (08/06) - ENTREGA!!!
-- [ ] Frontend de todas as telas terminado 
+- [ ] Frontend funcional de todas as telas terminado 
 - [ ] Autenticação completa
