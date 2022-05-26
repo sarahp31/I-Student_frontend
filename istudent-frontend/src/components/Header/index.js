@@ -3,6 +3,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { BrowserRouter as Router,Route,Link} from 'react-router-dom';
 
 function Header() {
 
@@ -42,24 +43,24 @@ function Header() {
         onClose={handleClose}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
-        }}
+        }} 
       >
         <MenuItem
         sx={{
           backgroundColor:'#ce0303',
-          color: '#d6d6d6',
+          color: 'white',
         }} 
         onClick={handleClose}>Computação</MenuItem>
         <MenuItem
         sx={{
           backgroundColor:'#ce0303',
-          color: '#d6d6d6',
+          color: 'white',
         }} 
         onClick={handleClose}>Mecânica</MenuItem>
         <MenuItem
         sx={{
           backgroundColor:'#ce0303',
-          color: '#d6d6d6',
+          color: 'white',
         }}  
         onClick={handleClose}>Mecatrônica</MenuItem>
       </Menu>
@@ -102,6 +103,7 @@ function Header() {
       >
       Ciência da Computação
       </Button>
+      <Link to="/login" style={{textDecoration:'none'}}>
       <Button
       sx={{ 
         color: 'white',
@@ -118,6 +120,7 @@ function Header() {
       >
       Log In
       </Button>
+      </Link>
       
 
     </div>

@@ -1,4 +1,4 @@
-.login-content{
+.signup-content{
     display: flex;
     flex-direction: column;
     padding: 200px;
@@ -9,27 +9,27 @@
     background-position: top;
 }
 
-.login-logo{
+.signup-logo{
     height: 3rem;
     width: 10rem;
     padding: 0.4%;
 }
 
-.img-area{
+.img-area-signup{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 5%;
 }
 
-.text-email{
+.text-email-signup{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     padding: 10%
 }
 
-.text-senha{
+.text-senha-signup{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -37,7 +37,15 @@
     padding-top: 0;
 }
 
-.text-login{
+.senha-confirm-signup{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10%;
+    padding-top: 0;
+}
+
+.text-signup{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
