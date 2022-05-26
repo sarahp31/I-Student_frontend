@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import Courses from './components/Courses';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,6 +17,7 @@ root.render(
         <Route exact path='/' element={<App />}/>
         <Route exact path='/login' element={<Login />}/>
         <Route exact path='/signup' element={<SignUp />}/>
+        <Route exact path='/:course' element={<Courses />}/>
       </Routes>
     </Router>
   </React.StrictMode>
