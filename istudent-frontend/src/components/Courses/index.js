@@ -1,30 +1,34 @@
+import "./index.css";
+import Header from "../Header";
+import Footer from "../Footer";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 
 function Courses(){
 
-    axios.get('http://127.0.0.1:8000/api/courses/').then((response) => console.log(response.data))
+    axios.get('http://127.0.0.1:8000/api/courses/').then((resp) => 
+    resp.data.map((course) => {
+        if (course.url_course_name == course_url){
+            const description = course.description;
+            const img_back = course.background_img;
+            const num_semestrs = course.background_img;
+            const course_name = course.display_course_name;
+        }
+        // console.log(course)
+    }));
 
-    const {course} = useParams();
-    console.log( {course} )
-
-    // const [courses, listCourses] = useState([]);
-
-    // const loadCourses = () => {
-    //     axios
-    //         .get(`http://127.0.0.1:8000/api/courses/`)
-    //         .then((resp) => console.log(resp));
-    // }
-
-    // useEffect(() => { 
-    //     loadCourses();
-    // }, {});
+    const {course_url} = useParams();
+    console.log( {course_url} )
     
     return (
         <div>
-            <img src="code.png"/>
+            <Header/>
+            <div className="course-content">
+                <img src="code.png" className="course-img"/>
+                <p> hello </p>
+            </div>
+            <Footer/>
         </div>
         
     );
