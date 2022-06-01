@@ -14,11 +14,13 @@ import Typography from '@mui/material/Typography';
 function Courses(){
 
     const [ contents, setContent ] = useState([]);
+    const [ subjects, setSubjects ] = useState([]);
 
     const {course} = useParams();
+    
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/courses/').then((resp) => 
+        axios.get('http://127.0.0.1:8000/api/courses/').then((resp) =>
         resp.data.map((courses) => {
             if (courses.url_course_name == course){
                 const description = courses.description;
@@ -30,6 +32,16 @@ function Courses(){
             }
         }));
     }, [course]);
+
+
+    useEffect(() => {
+        axios.get(`http://127.0.0.1:8000/api/${course}/subjects`).then((resp) =>
+        console.log(resp.data)
+        // setSubjects(resp.data)
+        )}, [course]);
+
+    
+
     
     return (
         <div>
