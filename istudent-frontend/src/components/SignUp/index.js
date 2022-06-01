@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 function SignUp() {
@@ -11,24 +12,21 @@ function SignUp() {
     const [passwordSingUp, setPasswordSingUp] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
-    console.log(emailSingUp)
-    console.log(passwordSingUp)
-    console.log(passwordConfirm)
+    const [userExists, setUserExists] = useState(false);
+    const [userStatus, setUserStatus] = useState()
 
-
-    // const sendSingUp = (event) => {
-    //     event.preventDefault()
-    //     axios
-    //         .post("", {"email" : emailSingUp, "password": passwordSingUp})
-    //         .then((res) => {
-    //             setEmailSingUp("");
-    //             setPasswordSingUp("");
-    //             setPasswordConfirm("");
-    //         })
-    // }
-
-    // onClick={sendSingUp}
-
+    const submitData = () => {
+        if (passwordSingUp === passwordConfirm){
+            axios
+            .post("http://127.0.0.1:8000/api/create_account/", {
+                "username": emailSingUp,
+                "password":passwordSingUp,
+                "email": emailSingUp
+                })
+            .then((response) => setUserExists)
+            .catch((error) => console.log(error))
+        }
+    }
 
     return (
         <div className="signup-content">
@@ -46,7 +44,7 @@ function SignUp() {
                     <TextField id="senha-basic" label="confirmação senha" onChange={(event) => setPasswordConfirm(event.target.value)}></TextField>
                 </div>
                 <div className="text-signup">
-                    <Button sx={{color: 'white', fontWeight: 'bold', backgroundColor:'#ce0303', borderRadius: 4.5,textTransform: 'none', border: 3, borderColor:'#ce0303'}} >Cadastrar</Button>
+                    <Button onClick={submitData} sx={{color: 'white', fontWeight: 'bold', backgroundColor:'#ce0303', borderRadius: 4.5,textTransform: 'none', border: 3, borderColor:'#ce0303'}} >Cadastrar</Button>
                 </div>
             </Paper>
         </div>
