@@ -22,7 +22,9 @@ function Header() {
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
       </style>
+      <Link to="/" style={{textDecoration:'none'}}>
       <img src="logo-insper.png"/>
+      </Link>
       <Button
       sx={{ 
         color: 'black',
