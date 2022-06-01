@@ -49,7 +49,7 @@ function SignUp() {
                     <TextField id="senha-basic" label="confirmação senha" onChange={(event) => setPasswordConfirm(event.target.value)}></TextField>
                 </div>
                 <div className="text-signup">
-                    <Link to="/" style={{textDecoration:'none'}}>
+                    <Link to="/login" style={{textDecoration:'none'}}>
                     <Button sx={{color: 'white', fontWeight: 'bold', backgroundColor:'#ce0303', borderRadius: 4.5,textTransform: 'none', border: 3, borderColor:'#ce0303'}} >Cadastrar</Button>
                     </Link>
                 </div>

@@ -37,8 +37,29 @@
     padding-top: 0;
 }
 
+.text-senha2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 10% 5% 10%;
+}
+
 .text-login{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+.text-login2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 2%;
+}
+
+.bottom-login{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
