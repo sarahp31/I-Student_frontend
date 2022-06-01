@@ -58,6 +58,14 @@ function Courses(){
             </div>
             <div className="galeria-name">
                 <h1 className="galeria-semestres"> Galeria do Semestres </h1>
+                <Accordion>
+                    <AccordionSummary>
+                        <Typography> Hello Teste</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <Typography> Have fun! </Typography>
+                    </AccordionDetails>
+                </Accordion>
             </div>
             <Footer/>
         </div>
