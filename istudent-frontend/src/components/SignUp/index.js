@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router,Route,Link} from 'react-router-dom';
 
-
 function SignUp() {
 
     const [emailSingUp, setEmailSingUp] = useState('');

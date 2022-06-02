@@ -4,9 +4,19 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { BrowserRouter as Router,Route,Link} from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-function Header() {
+function Header(props) {
+  
+  const [relativeAddress, setRelativeAddress] = React.useState('')
 
+  useEffect(()=>{
+    console.log(relativeAddress);
+    let address = props;
+    console.log(address);
+    setRelativeAddress('oi');
+    console.log(relativeAddress);
+  }, [])
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -47,7 +57,7 @@ function Header() {
           'aria-labelledby': 'basic-button',
         }} 
       >
-        <Link to="/engenharia_da_computacao" style={{textDecoration:'none'}}>
+        <Link to="/cursos/engenharia_da_computacao" style={{textDecoration:'none'}}>
         <MenuItem
         sx={{
           backgroundColor:'#ce0303',
@@ -55,7 +65,7 @@ function Header() {
         }} 
         onClick={handleClose}>Computação</MenuItem>
         </Link>
-        <Link to="/engenharia_mecanica" style={{textDecoration:'none'}}>
+        <Link to="/cursos/engenharia_mecanica" style={{textDecoration:'none'}}>
         <MenuItem
         sx={{
           backgroundColor:'#ce0303',
@@ -63,7 +73,7 @@ function Header() {
         }} 
         onClick={handleClose}>Mecânica</MenuItem>
         </Link>
-        <Link to="/engenharia_mecatronica" style={{textDecoration:'none'}}>
+        <Link to="/cursos/engenharia_mecatronica" style={{textDecoration:'none'}}>
         <MenuItem
         sx={{
           backgroundColor:'#ce0303',
@@ -72,7 +82,7 @@ function Header() {
         onClick={handleClose}>Mecatrônica</MenuItem>
         </Link>
       </Menu>
-      <Link to="/administracao" style={{textDecoration:'none'}}>
+      <Link to="/cursos/administracao" style={{textDecoration:'none'}}>
       <Button
       sx={{ 
         color: 'black',
@@ -87,7 +97,7 @@ function Header() {
       Administração
       </Button>
       </Link>
-      <Link to="/economia" style={{textDecoration:'none'}}>
+      <Link to="/cursos/economia" style={{textDecoration:'none'}}>
       <Button
       sx={{ 
         color: 'black',
@@ -102,7 +112,7 @@ function Header() {
       Economia
       </Button>
       </Link>
-      <Link to="/ciencia_da_computacao" style={{textDecoration:'none'}}>
+      <Link to="/cursos/ciencia_da_computacao" style={{textDecoration:'none'}}>
       <Button
       sx={{ 
         color: 'black',

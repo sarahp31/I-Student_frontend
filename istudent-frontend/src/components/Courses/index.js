@@ -30,25 +30,22 @@ function Courses(){
                 const listContent = [description, img_back, num_semestrs, course_name];
                 setContent(listContent);
             }
-        }));
+        }))
     }, [course]);
 
-
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/${course}/subjects`).then((resp) =>
-        console.log(resp.data)
-        // setSubjects(resp.data)
-        )}, [course]);
+        console.log(`http://127.0.0.1:8000/api/${course}/subjects/`)
+        // axios.get(`http://127.0.0.1:8000/api/courses/`).then((resp) =>
+        // console.log(resp)).catch()
+        // setSubjects(resp.data))
+        }, [course]);
 
-    
-
-    
     return (
         <div>
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
             </style>
-            <Header/>
+            <Header relative_address='../'/>
             <div className="courese-content">
                 <img src={`http://127.0.0.1:8000${contents[1]}` }className="course-img"/>
                 <div className="texts">

@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Courses from './components/Courses';
-
+import Error from './components/Error';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,9 +15,11 @@ root.render(
     <Router>
       <Routes>
         <Route exact path='/' element={<App />}/>
+        <Route exact path='*' element={<Error />}/>
         <Route exact path='/login' element={<Login />}/>
         <Route exact path='/signup' element={<SignUp />}/>
-        <Route exact path='/:course' element={<Courses />}/>
+        <Route exact path='/cursos/:course' element={<Courses />}/>
+        <Route exact path='/:token' element={<App />}/>
       </Routes>
     </Router>
   </React.StrictMode>
