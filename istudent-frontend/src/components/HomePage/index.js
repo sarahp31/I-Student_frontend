@@ -10,7 +10,7 @@ function HomePage() {
             <img src="insper.png" className="insperCapa"/>
             <div className="img-text">
                 <h2 className="text1"> Um espaço dos alunos, para os alunos</h2>
-                <Divider orientation="vertical" variant='middle' flexItem="true" sx={{ width: ".5px", height:"150px",  backgroundColor: '#ffffff', margin: 3 }} />
+                <Divider orientation="vertical" variant='middle' sx={{ width: ".5px", height:"150px",  backgroundColor: '#ffffff', margin: 3 }} />
                 <h2 className="text2"> O I-student surgiu de uma vontade de facilitar a vida do estudante Insper. Seja calouro ou veterano, temos algo para você! </h2>
             </div>
             <div className="text-main">
