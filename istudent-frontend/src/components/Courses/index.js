@@ -15,6 +15,7 @@ function Courses(){
 
     const [ contents, setContent ] = useState([]);
     const [ subjects, setSubjects ] = useState([]);
+    const [semestresNum, setSemestresNum] = useState();
 
     const {course} = useParams();
     
@@ -29,17 +30,19 @@ function Courses(){
                 const course_name = courses.display_course_name;
                 const listContent = [description, img_back, num_semestrs, course_name];
                 setContent(listContent);
+                setSemestresNum(num_semestrs);
             }
         }));
     }, [course]);
 
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/${course}/subjects`).then((resp) =>
-        console.log(resp.data)
-        // setSubjects(resp.data)
+  
+        axios.get(`http://127.0.0.1:8000/api/${course}/subjects/`).then((resp) =>
+        {
+            setSubjects(resp.data);
+        }
         )}, [course]);
-
     
 
     
@@ -57,15 +60,19 @@ function Courses(){
                 </div>
             </div>
             <div className="galeria-name">
-                <h1 className="galeria-semestres"> Galeria do Semestres </h1>
-                <Accordion>
-                    <AccordionSummary>
-                        <Typography> Hello Teste</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <Typography> Have fun! </Typography>
-                    </AccordionDetails>
-                </Accordion>
+                <h1 className="galeria-semestres"> Galeria dos Semestres </h1>
+                    {[...Array(semestresNum)].map((x, i) =>
+                        <Accordion>
+                            <AccordionSummary>
+                                <Typography> Semestre {i+1}</Typography>
+                            </AccordionSummary>
+                            {subjects[i].map((subject)=> 
+                                <AccordionDetails>
+                                    <Typography>{subject}</Typography>
+                                </AccordionDetails>
+                            )}
+                        </Accordion>
+                    )}
             </div>
             <Footer/>
         </div>
