@@ -15,7 +15,6 @@ function SignUp() {
     const [userExists, setUserExists] = useState(false);
     const [userStatus, setUserStatus] = useState();
 
-
     const submitData = () => {
         if (passwordSingUp === passwordConfirm){
             axios
@@ -28,7 +27,6 @@ function SignUp() {
             .catch((error) => console.log(error))
         }
     }
-
 
     return (
         <div className="signup-content">
