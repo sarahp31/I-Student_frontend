@@ -4,32 +4,39 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router,Route,Link} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 
 
 function SignUp() {
+
+    let navigate = useNavigate();
 
     const [emailSingUp, setEmailSingUp] = useState('');
     const [passwordSingUp, setPasswordSingUp] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
     const [userExists, setUserExists] = useState(false);
-    const [userStatus, setUserStatus] = useState();
 
 
     const submitData = () => {
-        if (passwordSingUp === passwordConfirm){
+        let emailDomain = emailSingUp.split("@")[1];
+    
+        if (passwordSingUp === passwordConfirm && (emailDomain == "al.insper.edu.br")){
             axios
             .post("http://127.0.0.1:8000/api/create_account/", {
                 "username": emailSingUp,
                 "password":passwordSingUp,
-                "email": emailSingUp
                 })
-            .then((response) => setUserExists)
-            .catch((error) => console.log(error))
+            .then((response) => {
+                navigate("/login");
+                setUserExists(true)
+            })
+            .catch((error) => setUserExists(true))
+        }
+        else{
+            setUserExists(true)
         }
     }
-
 
     return (
         <div className="signup-content">
@@ -39,20 +46,38 @@ function SignUp() {
                     <img src="logoIstudents.png" className="signup-logo"/>
                     </Link>
                 </div>
-                <div className="text-email-signup">
-                    <TextField id="email-basic" label="E-mail" onChange={(event) => setEmailSingUp(event.target.value)}></TextField>
-                </div>
-                <div className="text-senha-signup">
-                    <TextField id="senha-basic" label="senha" onChange={(event) => setPasswordSingUp(event.target.value)}></TextField>
-                </div>
-                <div className="senha-confirm-signup">
-                    <TextField id="senha-basic" label="confirmação senha" onChange={(event) => setPasswordConfirm(event.target.value)}></TextField>
-                </div>
-                <div className="text-signup">
-                    <Link to="/login" style={{textDecoration:'none'}}>
-                    <Button sx={{color: 'white', fontWeight: 'bold', backgroundColor:'#ce0303', borderRadius: 4.5,textTransform: 'none', border: 3, borderColor:'#ce0303'}} >Cadastrar</Button>
-                    </Link>
-                </div>
+                {userExists==false?(
+                    <div>
+                        <div className="text-email-signup">
+                            <TextField id="email-basic" label="E-mail" onChange={(event) => setEmailSingUp(event.target.value)}></TextField>
+                        </div>
+                        <div className="text-senha-signup">
+                            <TextField id="senha-basic" label="senha" onChange={(event) => setPasswordSingUp(event.target.value)}></TextField>
+                        </div>
+                        <div className="senha-confirm-signup">
+                            <TextField id="senha-basic" label="confirmação senha" onChange={(event) => setPasswordConfirm(event.target.value)}></TextField>
+                        </div>
+                        <div className="text-signup">
+                            <Button onClick={submitData} sx={{color: 'white', fontWeight: 'bold', backgroundColor:'#ce0303', borderRadius: 4.5,textTransform: 'none', border: 3, borderColor:'#ce0303'}} >Cadastrar</Button>
+                        </div>
+                    </div>
+                    
+                ):(
+                    <div>
+                        <div className="text-email-signup">
+                            <TextField error id="email-basic" label="E-mail" onChange={(event) => setEmailSingUp(event.target.value)}></TextField>
+                        </div>
+                        <div className="text-senha-signup">
+                            <TextField error id="senha-basic" label="senha" onChange={(event) => setPasswordSingUp(event.target.value)}></TextField>
+                        </div>
+                        <div className="senha-confirm-signup">
+                            <TextField error helperText="Problema de Cadastro" id="senha-basic" label="confirmação senha" onChange={(event) => setPasswordConfirm(event.target.value)}></TextField>
+                        </div>
+                        <div className="text-signup">
+                            <Button onClick={submitData} sx={{color: 'white', fontWeight: 'bold', backgroundColor:'#ce0303', borderRadius: 4.5,textTransform: 'none', border: 3, borderColor:'#ce0303'}} >Cadastrar</Button>
+                        </div>
+                    </div>
+                )}
             </Paper>
         </div>
     );
