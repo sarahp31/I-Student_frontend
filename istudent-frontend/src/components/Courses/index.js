@@ -2,7 +2,7 @@ import "./index.css";
 import Header from "../Header";
 import Footer from "../Footer";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -44,8 +44,6 @@ function Courses(){
         }
         )}, [course]);
     
-
-    
     return (
         <div>
             <style>
@@ -59,21 +57,25 @@ function Courses(){
                     <p className="description-content"> {contents[0]} </p>
                 </div>
             </div>
-            <div className="galeria-name">
-                <h1 className="galeria-semestres"> Galeria dos Semestres </h1>
-                    {[...Array(semestresNum)].map((x, i) =>
-                        <Accordion>
-                            <AccordionSummary>
-                                <Typography> Semestre {i+1}</Typography>
-                            </AccordionSummary>
-                            {subjects[i].map((subject)=> 
-                                <AccordionDetails>
-                                    <Typography>{subject}</Typography>
-                                </AccordionDetails>
-                            )}
-                        </Accordion>
-                    )}
-            </div>
+            {subjects.length==0?(
+                <div>carregando</div>
+            ):(
+                <div className="galeria-name">
+                    <h1 className="galeria-semestres"> Galeria dos Semestres </h1>
+                        {[...Array(semestresNum)].map((x, i) =>
+                            <Accordion>
+                                <AccordionSummary>
+                                    <Typography> Semestre {i+1}</Typography>
+                                </AccordionSummary>
+                                {subjects[i].map((subject)=> 
+                                    <AccordionDetails>
+                                        <Link to={`/${course}/${subject}`}>{subject}</Link>
+                                    </AccordionDetails>
+                                )}
+                            </Accordion>
+                        )}
+                </div>
+            )}
             <Footer/>
         </div>
         

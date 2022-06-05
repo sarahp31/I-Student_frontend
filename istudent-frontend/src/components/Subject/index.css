@@ -1,0 +1,34 @@
+.courese-content{
+    display: flex;
+    flex-direction: row;
+    margin: 2%;
+}
+
+.course-img{
+    padding-right: 2%;
+}
+
+.texts{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    text-align: justify;
+}
+
+.description-content{
+    font-size: 20px;
+
+}
+
+.galeria-name{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+}
+
+.galeria-semestres{
+    font-family: 'Montserrat', sans-serif;
+    padding-left: 2%;
+}
