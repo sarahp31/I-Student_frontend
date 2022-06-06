@@ -17,7 +17,6 @@ function SignUp() {
 
     const [userExists, setUserExists] = useState(false);
 
-
     const submitData = () => {
         let emailDomain = emailSingUp.split("@")[1];
     

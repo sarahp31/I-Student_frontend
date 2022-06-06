@@ -13,29 +13,33 @@ import { Button } from "@mui/material";
 function Courses(){
     const{course, subject} = useParams();
     const [summaryList, setSummaryList ] = useState([]);
+    const [fileSummary, setFileSummary] = useState([])
+    
+    let Token = sessionStorage.getItem('token')
 
     useEffect(() => {
-        console.log(course);
-        console.log(subject);
+        // console.log(course);
+        // console.log(subject);
         axios.get(`http://127.0.0.1:8000/api/${course}/${subject}/`)
         .then((response) => {
             setSummaryList(response.data);
-            console.log(response.data)
+            console.log(Token)
+            // console.log(response.data)
         })
     }, []);
 
-    // const submitData = () => {
-    //     axios({
-    //         method: 'post',
-    //         url: `http://127.0.0.1:8000/api/${course}/${subject}/upload/`,
-    //         data:{
-    //             username: "gabrielhso"
-    //         },
-    //         headers: {
-    //             'Content-Type': "application/json",
-    //             'Accept': "application/json"
-    //         }}).then((response)=> console.log(response))
-    // }
+    const submitData = () => {
+        axios({
+            method: 'post',
+            url: `http://127.0.0.1:8000/api/${course}/${subject}/upload/`,
+            data:{
+                "filename": fileSummary.name,
+                "file": fileSummary
+            },
+            headers: {
+                'Authorization': `Token ${Token}`,
+            }}).then((response)=> console.log(response))
+    }
 
     return (
         <div>
@@ -57,10 +61,17 @@ function Courses(){
                             </div>
                         ))}
                     </div>
-                    Mande o Seu Resumo!
-                    <form>
-                        <input type={"file"}></input>
-                    </form>
+                    {Token==null?(
+                        <div>Você precisa estar logado para fazer upload do seu resumo</div>
+                    ) : (
+                        <div>Mande o Seu Resumo!
+                            <form>
+                                {/* <input type={"file"} onChange={(e) => console.log(e.target.files[0])}></input> */}
+                                <input type={"file"} onChange={(e) => setFileSummary(e.target.files[0])}></input>                        
+                            </form>
+                            <Button onClick={submitData()}>Mandar</Button>
+                        </div>
+                    )}
                 </div>
             )}
             <Footer/>

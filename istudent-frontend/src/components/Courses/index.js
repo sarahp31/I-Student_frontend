@@ -41,6 +41,7 @@ function Courses(){
         axios.get(`http://127.0.0.1:8000/api/${course}/subjects/`).then((resp) =>
         {
             setSubjects(resp.data);
+            console.log(resp.data)
         }
         )}, [course]);
     
@@ -69,7 +70,7 @@ function Courses(){
                                 </AccordionSummary>
                                 {subjects[i].map((subject)=> 
                                     <AccordionDetails>
-                                        <Link to={`/${course}/${subject}`}>{subject}</Link>
+                                        <Link to={`/${course}/${subject[1]}`}>{subject[0]}</Link>
                                     </AccordionDetails>
                                 )}
                             </Accordion>
