@@ -13,32 +13,46 @@ import { Button } from "@mui/material";
 function Courses(){
     const{course, subject} = useParams();
     const [summaryList, setSummaryList ] = useState([]);
-    const [fileSummary, setFileSummary] = useState([])
+    const [filename, setFilename] = useState("");
+    const [fileSummary, setFileSummary] = useState([]);
+    const [description, setDescription ] = useState("");
     
-    let Token = sessionStorage.getItem('token')
+    let Token = sessionStorage.getItem('token');
 
     useEffect(() => {
-        // console.log(course);
-        // console.log(subject);
         axios.get(`http://127.0.0.1:8000/api/${course}/${subject}/`)
         .then((response) => {
+            console.log(response.data);
+            setDescription(response.data.description)
+        })
+    }, []);
+    
+    useEffect(() => {
+        axios.get(`http://127.0.0.1:8000/api/${course}/${subject}/summaries/`)
+        .then((response) => {
             setSummaryList(response.data);
-            console.log(Token)
-            // console.log(response.data)
         })
     }, []);
 
     const submitData = () => {
+        console.log(fileSummary);
+        console.log(filename);
+        const formData = new FormData();
+
+        formData.append("file",
+            fileSummary,
+            fileSummary.name);
+
         axios({
             method: 'post',
-            url: `http://127.0.0.1:8000/api/${course}/${subject}/upload/`,
-            data:{
-                "filename": fileSummary.name,
-                "file": fileSummary
-            },
+            url: `http://127.0.0.1:8000/api/${course}/${subject}/summaries/upload/`,
+            data: formData,
             headers: {
                 'Authorization': `Token ${Token}`,
-            }}).then((response)=> console.log(response))
+            }}).then((response)=> {
+                console.log(response.data);
+                window.location.reload();
+            })
     }
 
     return (
@@ -47,6 +61,12 @@ function Courses(){
                 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
             </style>
             <Header/>
+            <div>
+                {subject}
+            </div>
+            <div>
+                {description}
+            </div>
             {summaryList.length==0?(
                 <div>
                     Carregando
@@ -54,7 +74,6 @@ function Courses(){
             ):(
                 <div>
                     <div>
-                        {/* {summaryList.length} */}
                         {summaryList.map(summary => (
                             <div key={`summary__${summary.id}`}>
                             <a href={`http://127.0.0.1:8000${summary.file}`}>{summary.filename}</a>
@@ -66,10 +85,14 @@ function Courses(){
                     ) : (
                         <div>Mande o Seu Resumo!
                             <form>
-                                {/* <input type={"file"} onChange={(e) => console.log(e.target.files[0])}></input> */}
-                                <input type={"file"} onChange={(e) => setFileSummary(e.target.files[0])}></input>                        
+                                <input type={"text"} onChange={(e) => setFilename(e.target.value)}></input>                    
+                                <input type={"file"} onChange={(e) => setFileSummary(e.target.files[0])}></input>
                             </form>
-                            <Button onClick={submitData()}>Mandar</Button>
+                            <button onClick={() => fileSummary.length==0?(
+                                console.log('Arquivo vazio')
+                                ):(
+                                submitData()
+                            )}>Botão</button>
                         </div>
                     )}
                 </div>
