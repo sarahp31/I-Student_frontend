@@ -1,34 +1,48 @@
-.courese-content{
-    display: flex;
-    flex-direction: row;
-    margin: 2%;
+.subject-description{
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 2%;
 }
 
-.course-img{
-    padding-right: 2%;
+.subject-name{
+    font-size: 40px;
 }
 
-.texts{
+.description-text{
+    font-size: 20px;
+}
+
+.contenudo-resumos{
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 2%;
+    font-size: 18px;
+}
+
+.resumos-lista{
     display: flex;
     flex-direction: column;
-    font-family: 'Montserrat', sans-serif;
-    text-align: justify;
 }
 
-.description-content{
-    font-size: 20px;
-
+.resumo{
+    padding-bottom: 1%; 
 }
 
-.galeria-name{
+.noLogin{
+    margin-bottom: 55%;
+}
+
+.sendResumo-content{
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-
+    font-size: 20px;
 }
 
-.galeria-semestres{
-    font-family: 'Montserrat', sans-serif;
-    padding-left: 2%;
+.button-sendArquivo{
+    background-color: #ce0303;
+    color: white;
+    border-color: #ce0303;
+    border-radius: 9%;
+    margin: 2%;
+    width: 10%;
+    padding: 0.5%;
 }

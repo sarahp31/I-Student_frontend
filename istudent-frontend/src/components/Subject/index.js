@@ -4,11 +4,6 @@ import Footer from "../Footer";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import Typography from '@mui/material/Typography';
-import { Button } from "@mui/material";
 
 function Courses(){
     const{course, subject} = useParams();
@@ -61,38 +56,41 @@ function Courses(){
                 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
             </style>
             <Header/>
-            <div>
-                {subject}
-            </div>
-            <div>
-                {description}
+            <div className="subject-description">
+                <h2 className="subject-name">
+                    {subject}
+                </h2>
+                <p className="description-text">
+                    {description}
+                </p>
             </div>
             {summaryList.length==0?(
                 <div>
                     Carregando
                 </div>
             ):(
-                <div>
-                    <div>
+                <div className="contenudo-resumos">
+                    <ul className="resumos-lista">
                         {summaryList.map(summary => (
-                            <div key={`summary__${summary.id}`}>
+                            <li key={`summary__${summary.id}`} className="resumo">
                             <a href={`http://127.0.0.1:8000${summary.file}`}>{summary.filename}</a>
-                            </div>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                     {Token==null?(
-                        <div>Você precisa estar logado para fazer upload do seu resumo</div>
+                        <div className="noLogin">Você precisa estar logado para fazer upload do seu resumo</div>
                     ) : (
-                        <div>Mande o Seu Resumo!
+                        <div className="sendResumo-content">
+                            <p> Mande o Seu Resumo! </p>
                             <form>
                                 <input type={"text"} onChange={(e) => setFilename(e.target.value)}></input>                    
                                 <input type={"file"} onChange={(e) => setFileSummary(e.target.files[0])}></input>
                             </form>
-                            <button onClick={() => fileSummary.length==0?(
+                            <button className="button-sendArquivo" onClick={() => fileSummary.length==0?(
                                 console.log('Arquivo vazio')
                                 ):(
                                 submitData()
-                            )}>Botão</button>
+                            )}>Enviar</button>
                         </div>
                     )}
                 </div>
