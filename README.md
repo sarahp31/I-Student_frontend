@@ -1,5 +1,12 @@
 # I-Student_frontend <br/>
 
+<h2>Para rodar o front-end</h2>
+```
+$ npm i
+$ cd istudent-frontend
+$ python manage.py runserver
+```
+
 ## Lista de tarefas <br/>
 
 ### Semana 1 (25/06)
