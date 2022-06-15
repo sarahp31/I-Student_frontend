@@ -4,6 +4,7 @@ import Footer from "../Footer";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Typography } from "@mui/material";
 
 function Courses(){
     const{course, subject} = useParams();
@@ -17,7 +18,7 @@ function Courses(){
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/api/${course}/${subject}/`)
         .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             setDescription(response.data.description)
         })
     }, []);
@@ -66,7 +67,25 @@ function Courses(){
             </div>
             {summaryList.length==0?(
                 <div>
-                    Carregando
+                    <Typography>
+                        Ainda não há resumos para essa disciplina...
+                    </Typography>
+                    {Token==null?(
+                        <div className="noLogin">Você precisa estar logado para fazer upload do seu resumo</div>
+                    ):(
+                        <div className="sendResumo-content">
+                            <p> Mande o Seu Resumo! </p>
+                            <form>
+                                <input type={"text"} onChange={(e) => setFilename(e.target.value)}></input>                    
+                                <input type={"file"} onChange={(e) => setFileSummary(e.target.files[0])}></input>
+                            </form>
+                            <button className="button-sendArquivo" onClick={() => fileSummary.length==0?(
+                                console.log('Arquivo vazio')
+                                ):(
+                                submitData()
+                            )}>Enviar</button>
+                        </div>
+                    )}
                 </div>
             ):(
                 <div className="contenudo-resumos">

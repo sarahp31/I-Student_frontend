@@ -41,7 +41,6 @@ function Courses(){
         axios.get(`http://127.0.0.1:8000/api/${course}/subjects/`).then((resp) =>
         {
             setSubjects(resp.data);
-            console.log(resp.data[4])
         }
         )}, [course]);
     
@@ -64,12 +63,12 @@ function Courses(){
                 <div className="galeria-name">
                     <h1 className="galeria-semestres"> Galeria dos Semestres </h1>
                         {[...Array(semestresNum)].map((x, i) =>
-                            <Accordion sx={{ width: 700, margin: 1.5, padding:1.5 }}>
+                            <Accordion key={i+1} sx={{ width: 700, margin: 1.5, padding:1.5 }}>
                                 <AccordionSummary>
                                     <Typography> Semestre {i+1}</Typography>
                                 </AccordionSummary>
                                 {subjects[i].map((subject)=> 
-                                    <AccordionDetails>
+                                    <AccordionDetails key={subject[1]}>
                                         <Link to={`/${course}/${subject[1]}`} style={{textDecoration:'none'}}>{subject[0]}</Link>
                                     </AccordionDetails>
                                 )}
